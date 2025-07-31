@@ -1,44 +1,94 @@
 //Rock Paper Scissor in Console
 
 
+
 //Step-1: Writing the logic to get Computer Choice
 
 function getComputerChoice(){
 
-    let computerChoice = Math.floor(Math.random()*3) + 1;
+    let computerChoices = Math.floor(Math.random()*3) + 1;
     
-    if(computerChoice === 1){
+    if(computerChoices === 1){
         return "rock";
     }
-    else if(computerChoice === 2){
+    else if(computerChoices === 2){
         return "paper";
     }
-    else{
-        return "scissors";
+    else if(computerChoices === 3){
+        return "scissor";
     }
+ }
 
-}
-//console.log(getComputerChoice()); 
-// //This will return one of the: "rock", "paper", "scissor"
-getComputerChoice();
 
 //Step-2: Human Choice
 
 function getHumanChoice(){
-    let humanChoice = prompt("Choose one of the following- rock, paper, or scissor:");
-    humanChoice = humanChoice.toLowerCase();
-    //console.log(typeof humanChoice);
-    
-    while(true){
 
-        if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissor"){
-            return humanChoice;
+        let input;
+        let validInput = false;
+
+    while(!validInput){
+        input = prompt("Choose one of the following- rock, paper, or scissor:").toLowerCase();
+
+        if( input === "rock" || input === "paper" || input === "scissor"){
+            validInput = true;
+            return input;
         }
-       else{
-        humanChoice = prompt("Choose one of the following- rock, paper, or scissor:");
-        humanChoice = humanChoice.toLowerCase();
-       }
+      }
+    }
+
+
+
+//Step-3: Declare Players score variables
+
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
+let tie = 0;
+
+
+
+//Step-4: Playing a single round
+
+function playRound(humanChoice, computerChoice){
+    
+        if(computerChoice === "paper" && humanChoice === "rock"){
+        computerScore++;
+        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
+        console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
+
+    }
+    else if(computerChoice === "scissor" && humanChoice === "paper"){
+        computerScore++;
+        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
+        console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
+    }
+    else if( computerChoice === "rock" && humanChoice === "scissor"){
+        computerScore++;
+        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
+        console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
+    }
+    else if(computerChoice == humanChoice){
+        tie++;
+        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)  
+        console.log(`It's a tie. Your Score: ${humanScore}, Computer Score: ${computerScore}, Round: ${round}`);
+    }
+    else{
+        humanScore++;
+        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
+        console.log(`You win: Your Score: ${humanScore}, Computer score: ${computerScore}, Round: ${round}.`);
+        }
+    }
+
+
+
+//Step-5: Playing for 5 times
+
+function playGame(){
+        for(let i = 1; i<=5; i++){
+        round++;
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 }
-}
-console.log(getHumanChoice());
-//getHumanChoice();
+    
+playGame();
