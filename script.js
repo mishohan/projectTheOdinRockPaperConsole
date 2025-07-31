@@ -52,31 +52,21 @@ let tie = 0;
 
 function playRound(humanChoice, computerChoice){
     
-        if(computerChoice === "paper" && humanChoice === "rock"){
+        if(computerChoice === "paper" && humanChoice === "rock" || computerChoice === "scissor" && humanChoice === "paper" || computerChoice === "rock" && humanChoice === "scissor"){
         computerScore++;
         console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
         console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
 
     }
-    else if(computerChoice === "scissor" && humanChoice === "paper"){
-        computerScore++;
-        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
-        console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
-    }
-    else if( computerChoice === "rock" && humanChoice === "scissor"){
-        computerScore++;
-        console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
-        console.log(`You loss: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
-    }
     else if(computerChoice == humanChoice){
         tie++;
         console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)  
-        console.log(`It's a tie. Your Score: ${humanScore}, Computer Score: ${computerScore}, Round: ${round}`);
+        console.log(`It's a tie.Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
     }
     else{
         humanScore++;
         console.log(`Computer Choose: ${computerChoice}, You Choose: ${humanChoice}.`)
-        console.log(`You win: Your Score: ${humanScore}, Computer score: ${computerScore}, Round: ${round}.`);
+        console.log(`You win: Computer score: ${computerScore}, Your Score: ${humanScore}, Round: ${round}.`);
         }
     }
 
