@@ -9,5 +9,6 @@ Instruction:
 5. Please don't use symbols as input.
 6. If the spelling is wrong, try again. It should work fine if you spell right afterwards.
 
+🤠 The Game will be played for 5 times. So, please be Patience.
 
 LivePreview: https://mishohan.github.io/projectTheOdinRockPaperConsole/
